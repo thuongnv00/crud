@@ -21,7 +21,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/departments/{id}")
-    public ResponseEntity<Department> getTutorialById(@PathVariable("id") Long id) {
+    public ResponseEntity<Department> getDepartmentById(@PathVariable("id") Long id) {
         Department department = departmentService.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("Not found Department with id = " + id));
         return new ResponseEntity<>(department, HttpStatus.OK);
