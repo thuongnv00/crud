@@ -3,9 +3,11 @@ package com.example.appdemo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 public class Employee implements Serializable {
@@ -26,6 +28,8 @@ public class Employee implements Serializable {
     @JsonIgnore
     private Department department;
 
+    private LocalDate birthDate;
+
     public Department getDepartment() {
         return department;
     }
@@ -35,6 +39,26 @@ public class Employee implements Serializable {
     }
 
     public Employee() {
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public Employee(Long id, String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode, Department department, LocalDate birthDate) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.jobTitle = jobTitle;
+        this.phone = phone;
+        this.imageUrl = imageUrl;
+        this.employeeCode = employeeCode;
+        this.department = department;
+        this.birthDate = birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     public Employee(Long id, String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode, Department department) {
