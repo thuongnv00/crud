@@ -16,6 +16,8 @@ public class DepartmentController {
 
     private final DepartmentService departmentService;
 
+
+
     public DepartmentController(DepartmentService departmentService) {
         this.departmentService = departmentService;
     }
@@ -26,4 +28,5 @@ public class DepartmentController {
                 .orElseThrow(() -> new UserNotFoundException("Not found Department with id = " + id));
         return new ResponseEntity<>(department, HttpStatus.OK);
     }
+
 }
